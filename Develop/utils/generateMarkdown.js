@@ -1,24 +1,32 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  console.log("test_console: "+ license);
+// Returns a license badge based on which license is passed in 
+const renderLicenseBadge = ({license}) =>{ // If there is no license, return an empty string
+  (license == "None") ? "" : `![](https://img.shields.io/badge/license-${license}-blue)`
+  }
+//Function that returns the license link
+const renderLicenseLink = ({license}) =>{ // If there is no license, return an empty string
+  (license == "None") ? "" : `[ License](#license)`
+  }
+//Function that returns the license section of README
+const renderLicenseSection = ({license}) =>{ // If there is no license, return an empty string
+  (license == "None") ? "" : `
+<a name="license"></a>
+  
+## License
+    
+This project is licensed under the following license:
+
+![license](https://img.shields.io/badge/-${license}-inactive)
+`
 }
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution}) =>
+// Function to generate markdown for README
+  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution},licenseElements) =>
   `
   ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
   # ${project}
+
+  ${licenseElements[0]}
   
-  ![Web Developer](https://img.shields.io/badge/license-${license}-blue)
+
   ## Description
   
   ${description}
@@ -26,7 +34,7 @@ function renderLicenseSection(license) {}
   ## Table of Contents
   - [ Instalation ](#instalation)
   - [ Usage ](#usage)
-  - [ License](#license)
+  - ${licenseElements[1]}
   - [ Contributing](#Contributing)
   - [ Test ](#test)
   - [ Questions ](#questions)
@@ -45,12 +53,8 @@ function renderLicenseSection(license) {}
   
   ${usage}
   
-  <a name="license"></a>
-  
-  ## License
-  
-  This project is licensed under the -license- license.
-  
+${licenseElements[2]}
+
   
   
   <a name="Contributing"></a>
@@ -78,5 +82,7 @@ function renderLicenseSection(license) {}
 
 module.exports = {
   renderLicenseBadge,
+  renderLicenseLink,
+  renderLicenseSection,
   generateMarkdown
 }
