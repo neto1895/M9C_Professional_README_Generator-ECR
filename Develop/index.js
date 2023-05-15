@@ -4,65 +4,26 @@ const fs = require('fs');
 const { default: Choice } = require('inquirer/lib/objects/choice');
 // TODO: Create an array of questions for user input
 const licenses = [
-    { name: '- MIT', value: "MIT" },
+    { name: '- MIT',        value: "MIT" },
     { name: '- APACHE 2.0', value: "APACHE 2.0" },
-    { name: '- GPL 3.0', value: "GPL 3.0" },
-    { name: '- GNU V3.0', value: "GNU V3.0" },
-    { name: '- BSD 3', value: "BSD 3" },
-    { name: '- None', value: "None" },      
+    { name: '- GPL 3.0',    value: "GPL 3.0" },
+    { name: '- GNU V3.0',   value: "GNU V3.0" },
+    { name: '- BSD 3',      value: "BSD 3" },
+    { name: '- None',       value: "None" },      
 ];
 
 const questions = () =>{
     return inquirer.prompt([
-        {   type: 'input',
-            name: 'username',
-            message: 'What is your GitHub username?',   
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'What is your email address?',
-        },
-        {
-            type: 'input',
-            name: 'project',
-            message: "What is your project's name?",
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: 'Write a short description of your project: '
-        },
-        {
-            type: "list",
-            name: "license",
-            message: "What kind of license should your project have?",
-            choices: licenses,
-        },
-        {
-            type: 'list',
-            name: 'installation',
-            message: 'What command should be run to install dependencies?',
-            choices: [{name: "npm i", value: "npm i"}],
-        },
-        {
-            type: 'list',
-            name: 'test',
-            message: 'What command should be run to run test?',
-            choices: [{name: "npm test", value: "npm test"}],
-        },
-        {
-            type: 'input',
-            name: 'usage',
-            message: 'What does the user need to know about using the repo?'    
-        },
-        {
-            type: 'input',
-            name: 'contribution',
-            message: 'What does the user need to know about contributing to the repo?'  
-        },
-]);
-}
+        { type: 'input',name: 'username',    message: 'What is your GitHub username?',   },
+        { type: 'input',name: 'email',       message: 'What is your email address?',},
+        { type: 'input',name: 'project',     message: "What is your project's name?",},
+        { type: 'input',name: 'description', message: 'Write a short description of your project: '},
+        { type: "list", name: "license",     message: "What kind of license should your project have?",     choices: licenses,},
+        { type: 'list', name: 'installation',message: 'What command should be run to install dependencies?',choices: [{name: "npm i", value: "npm i"}],},
+        { type: 'list', name: 'test',        message: 'What command should be run to run test?',            choices: [{name: "npm test", value: "npm test"}],},
+        { type: 'input',name: 'usage',       message: 'What does the user need to know about using the repo?'    },
+        { type: 'input',name: 'contribution',message: 'What does the user need to know about contributing to the repo?'  },
+])}
 
 const generateREADME = ({username, email, project, description, license, installation, test, usage, contribution}) =>
 `
