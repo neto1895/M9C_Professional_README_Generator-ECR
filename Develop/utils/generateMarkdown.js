@@ -1,14 +1,14 @@
 // Returns a license badge based on which license is passed in 
 const renderLicenseBadge = ({license}) =>{ // If there is no license, return an empty string
-  (license == "None") ? "" : `![](https://img.shields.io/badge/license-${license}-blue)`
+  if (license == "None") { return "" } else { return `![](https://img.shields.io/badge/license-${license}-blue)`} 
   }
 //Function that returns the license link
 const renderLicenseLink = ({license}) =>{ // If there is no license, return an empty string
-  (license == "None") ? "" : `[ License](#license)`
+  if (license == "None") { return "" } else { return `[ License](#license)`}
   }
 //Function that returns the license section of README
 const renderLicenseSection = ({license}) =>{ // If there is no license, return an empty string
-  (license == "None") ? "" : `
+  if (license == "None") { return "" } else { return `
 <a name="license"></a>
   
 ## License
@@ -17,10 +17,10 @@ This project is licensed under the following license:
 
 ![license](https://img.shields.io/badge/-${license}-inactive)
 `
-}
+}}
 // Function to generate markdown for README
-  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution},licenseElements) =>{
-  (license == "None") ? "" : `
+  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution},licenseElements) =>
+  `
   ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
   # ${project}
 
@@ -79,7 +79,7 @@ ${licenseElements[2]}
   
   ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
   `
-  };
+  ;
 
 module.exports = {
   renderLicenseBadge,
