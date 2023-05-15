@@ -19,8 +19,8 @@ This project is licensed under the following license:
 `
 }
 // Function to generate markdown for README
-  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution},licenseElements) =>
-  `
+  const generateMarkdown = ({username, email, project, description, license, installation, test, usage, contribution},licenseElements) =>{
+  (license == "None") ? "" : `
   ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
   # ${project}
 
@@ -78,7 +78,8 @@ ${licenseElements[2]}
   If you have any questions about the repo, open an issue or contact me directly at [${email}](mailto:${email}). You can find more of my work at [${username}](https://github.com/${username})
   
   ![Web Developer](https://img.shields.io/badge/bootcamp-Web%20Developer-red)
-  `;
+  `
+  };
 
 module.exports = {
   renderLicenseBadge,
